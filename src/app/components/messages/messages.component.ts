@@ -13,6 +13,4 @@ export class MessagesComponent {
 
     constructor(public messagesService: MessagesService) {}
 
-
-
 }
