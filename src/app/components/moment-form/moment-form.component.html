@@ -1,11 +1,23 @@
-<form>
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
     <div class="form-group">
         <label for="title">Título:</label>
-        <input type="text" name="" id="" placeholder="Um título empolgante." required />
+        <input type="text" name="" id="" placeholder="Um título empolgante." formControlName="title" required />
+    </div>
+    <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="title.errors?.['required']">O título é obrigatório.</p>
+        <p *ngIf="title.errors?.['minlength']">O título deve ter mais que três caracteres.</p>
     </div>
     <div class="form-group">
-        <label for="descrition">Descrição:</label>
-        <textarea placeholder="Conte como foi ❤️" required></textarea>
+        <label for="description">Descrição:</label>
+        <textarea placeholder="Conte como foi ❤️" formControlName="description" ng-trim="false" (keyup)="descCountWords()" required></textarea>
+        <p>
+            Caracteres restantes: {{ descLength }}
+        </p>
+        <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
+            <p *ngIf="description.errors?.['required']">A descrição é obrigatória.</p>
+            <p *ngIf="description.errors?.['minlength']">A descrição deve ter, ao menos, cinco caracteres.</p>
+            <p *ngIf="description.errors?.['maxlength']">A descrição deve ter, no máximo, 256 caracteres.</p>
+        </div>
     </div>
     <div class="form-group">
         <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
