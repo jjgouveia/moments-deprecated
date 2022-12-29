@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
         <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
-        <input type="file">
+        <input type="file" (change)="onFileSelected($event)">
     </div>
     <input type="submit" value="{{ btnText }}">
 </form>
