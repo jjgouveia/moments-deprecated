@@ -3,8 +3,25 @@
         Veja o que estão compartilhando.
     </h1>
     <!-- Form de busca -->
-    <div *ngFor="let moment of moments">
+    <div *ngIf="moments.length > 0; else noMoments">
+<div class="moments-container">
+    <div class="moment" *ngFor="let moment of moments">
+        <img src="{{ baseApiUrl }}/uploads/{{moment.image}}"alt="{{ moment.title }}">
         <h2>{{ moment.title }}</h2>
-        <p>{{ moment.description }}</p>
+        <p class="date">Em: {{ moment.created_at }}</p>
+        <h3>{{ moment.description }}</h3>
+        <div *ngIf="moment.comments!.length > 0 ; else noComments">
+           Número de comentários: {{moment.comments?.length}}
+        </div>
+        <p><a routerLink="moments/{{ moment.id }}">Detalhes</a></p>
+        <ng-template #noComments>
+            <p>Ainda não há comentários para serem exibidos</p>
+        </ng-template>
     </div>
+</div>
+    </div>
+    <ng-template #noMoments>
+        <h2>Não há Moments cadastrados 😒</h2>
+        <a routerLink="/moments/new">Vamos começar? 📸</a>
+    </ng-template>
 </div>
