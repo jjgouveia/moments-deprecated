@@ -31,5 +31,9 @@ export class NewMomentComponent {
     this.messagesService.add('Momento adicionado com sucesso')
     // redirect
     this.router.navigate(['/']);
+    // reload page
+    setTimeout(() => {
+      window.location.reload();      
+    }, 1000);
   }
 }
