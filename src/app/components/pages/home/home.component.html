@@ -15,7 +15,6 @@
                 <img src="{{ baseApiUrl }}/uploads/{{moment.image}}" alt="{{ moment.title }}">
                 <h2>{{ moment.title }}</h2>
                 <p class="date">Em: {{ moment.created_at }}</p>
-                <h3>{{ moment.description }}</h3>
                 <div *ngIf="moment.comments!.length > 0 ; else noComments">
                     Número de comentários: {{moment.comments?.length}}
                 </div>
