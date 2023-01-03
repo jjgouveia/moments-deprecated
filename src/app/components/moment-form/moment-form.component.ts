@@ -30,7 +30,7 @@ export class MomentFormComponent implements OnInit {
         Validators.minLength(5),
         Validators.maxLength(256),
       ]),
-      image: new FormControl(''),
+      image: new FormControl('', [ Validators.required ]),
     });
   }
 
@@ -47,6 +47,10 @@ export class MomentFormComponent implements OnInit {
 
   get description() {
     return this.momentForm.get('description')!;
+  }
+
+  get image() {
+    return this.momentForm.get('image')!;
   }
 
   onFileSelected(event:any) {

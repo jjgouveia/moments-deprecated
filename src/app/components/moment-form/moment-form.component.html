@@ -21,7 +21,13 @@
     </div>
     <div class="form-group">
         <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
-        <input type="file" (change)="onFileSelected($event)">
+        <input type="file" (change)="onFileSelected($event)" formControlName="image" required>
+
+        <div *ngIf=" image.errors && formDir.submitted" class="validation-error">
+            <p *ngIf="image.errors?.['required']">A imagem é obrigatória!</p>
+        </div>
     </div>
+    
+
     <input type="submit" value="{{ btnText }}">
 </form>
