@@ -21,22 +21,30 @@ export class MomentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.momentForm = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl('', [
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      description: new FormControl('', [
+      description: new FormControl(this.momentData ? this.momentData.description : '', [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(256),
       ]),
-      image: new FormControl(''),
+      image: new FormControl('', [ Validators.required ]),
     });
   }
 
   get title() {
     return this.momentForm.get('title')!;
+  }
+
+  get description() {
+    return this.momentForm.get('description')!;
+  }
+
+  get image() {
+    return this.momentForm.get('image')!;
   }
 
   descCountWords(): number {
@@ -46,9 +54,6 @@ export class MomentFormComponent implements OnInit {
     return this.descLength = remaining;
   }
 
-  get description() {
-    return this.momentForm.get('description')!;
-  }
 
   onFileSelected(event:any) {
     const file: File = event.target.files[0];
