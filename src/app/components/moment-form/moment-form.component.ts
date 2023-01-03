@@ -20,17 +20,17 @@ export class MomentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.momentForm = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl('', [
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      description: new FormControl('', [
+      description: new FormControl(this.momentData ? this.momentData.description : '', [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(256),
       ]),
-      image: new FormControl('', [ Validators.required ]),
+      image: new FormControl(this.momentData ? this.momentData.image : '', [ Validators.required ]),
     });
   }
 

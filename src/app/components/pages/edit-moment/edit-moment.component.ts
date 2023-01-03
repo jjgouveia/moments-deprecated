@@ -27,4 +27,10 @@ export class EditMomentComponent implements OnInit {
     })
   }
 
+  editHandler(event: any) {
+    console.log('====================================');
+    console.log('teste');
+    console.log('====================================');
+  }
+
 }
