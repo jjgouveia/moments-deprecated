@@ -10,6 +10,9 @@ import { IMoment } from 'src/app/services/interface/IMoment';
 export class MomentFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<IMoment>();
   @Input() btnText!: string
+  @Input() momentData: IMoment | null = null
+  @Input() editMode: boolean = false
+
 
   momentForm!: FormGroup
   descLength: number = 256;
@@ -18,12 +21,12 @@ export class MomentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.momentForm = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl('', [
+      id: new FormControl(this.momentData ? this.momentData.id : ''),
+      title: new FormControl(this.momentData ? this.momentData.title : '', [
         Validators.required,
         Validators.minLength(3),
       ]),
-      description: new FormControl('', [
+      description: new FormControl(this.momentData ? this.momentData.description : '', [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(256),
@@ -36,6 +39,14 @@ export class MomentFormComponent implements OnInit {
     return this.momentForm.get('title')!;
   }
 
+  get description() {
+    return this.momentForm.get('description')!;
+  }
+
+  get image() {
+    return this.momentForm.get('image')!;
+  }
+
   descCountWords(): number {
     const MAX_CHAR = 256;
     const WORDS_LENGTH: number = this.momentForm.get('description')?.value.length;
@@ -43,9 +54,6 @@ export class MomentFormComponent implements OnInit {
     return this.descLength = remaining;
   }
 
-  get description() {
-    return this.momentForm.get('description')!;
-  }
 
   onFileSelected(event:any) {
     const file: File = event.target.files[0];
