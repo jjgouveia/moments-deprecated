@@ -31,7 +31,7 @@ export class MomentFormComponent implements OnInit {
         Validators.minLength(5),
         Validators.maxLength(256),
       ]),
-      image: new FormControl('', [ Validators.required ]),
+      image: new FormControl(''),
     });
   }
 

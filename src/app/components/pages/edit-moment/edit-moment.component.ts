@@ -33,4 +33,19 @@ export class EditMomentComponent implements OnInit {
     })
   }
 
+  async editHandler(momentData: IMoment) {
+    const id = this.moment.id;
+
+    const formData = new FormData()
+
+    formData.append('title', momentData.title);
+    formData.append('description', momentData.description);
+
+    (await this.momentService.updateMoment(id!, formData)).subscribe()
+
+    this.messagesService.add('Moment atualizado com sucesso!')
+
+    this.router.navigate(['/'])
+  }
+
 }

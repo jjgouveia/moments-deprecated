@@ -21,11 +21,13 @@
             <p *ngIf="description.errors?.['maxlength']">A descrição deve ter, no máximo, 256 caracteres.</p>
         </div>
     </div>
-    <div *ngIf="!editMode; else editModeView" class="form-group">
-        <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
-        <input type="file" (change)="onFileSelected($event)" required>
-        <div *ngIf="image.invalid && formDir.submitted" class="validation-error">
-            <p *ngIf="image.errors?.['required']">A image é obrigatória.</p>
+    <div *ngIf="!editMode;else editModeView">
+        <div class="form-group">
+            <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
+            <input type="file" (change)="onFileSelected($event)" required="false">
+            <div *ngIf="image.invalid && formDir.submitted" class="validation-error">
+                <p *ngIf="image.errors?.['required']">A image é obrigatória.</p>
+            </div>
         </div>
     </div>
     <ng-template #editModeView>
