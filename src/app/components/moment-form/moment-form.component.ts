@@ -10,7 +10,8 @@ import { IMoment } from 'src/app/services/interface/IMoment';
 export class MomentFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<IMoment>();
   @Input() btnText!: string
-  @Input() momentData: IMoment | null = null;
+  @Input() momentData: IMoment | null = null
+  @Input() editMode: boolean = false
 
 
   momentForm!: FormGroup
@@ -38,19 +39,19 @@ export class MomentFormComponent implements OnInit {
     return this.momentForm.get('title')!;
   }
 
-  descCountWords(): number {
-    const MAX_CHAR = 256;
-    const WORDS_LENGTH: number = this.momentForm.get('description')?.value.length;
-    let remaining: number = MAX_CHAR - WORDS_LENGTH;
-    return this.descLength = remaining;
-  }
-
   get description() {
     return this.momentForm.get('description')!;
   }
 
   get image() {
     return this.momentForm.get('image')!;
+  }
+
+  descCountWords(): number {
+    const MAX_CHAR = 256;
+    const WORDS_LENGTH: number = this.momentForm.get('description')?.value.length;
+    let remaining: number = MAX_CHAR - WORDS_LENGTH;
+    return this.descLength = remaining;
   }
 
   onFileSelected(event:any) {
