@@ -19,9 +19,12 @@
             <p *ngIf="description.errors?.['maxlength']">A descrição deve ter, no máximo, 256 caracteres.</p>
         </div>
     </div>
-    <div class="form-group">
+    <div *ngIf="!editMode; else editModeView" class="form-group">
         <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
-        <input type="file" (change)="onFileSelected($event)">
+        <input type="file" (change)="onFileSelected($event)" required>
     </div>
+    <ng-template #editModeView>
+        <h3> Modo de edição </h3>
+    </ng-template>
     <input type="submit" value="{{ btnText }}">
 </form>

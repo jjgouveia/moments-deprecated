@@ -10,6 +10,9 @@ import { IMoment } from 'src/app/services/interface/IMoment';
 export class MomentFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<IMoment>();
   @Input() btnText!: string
+  @Input() momentData: IMoment | null = null
+  @Input() editMode: boolean = false
+
 
   momentForm!: FormGroup
   descLength: number = 256;
