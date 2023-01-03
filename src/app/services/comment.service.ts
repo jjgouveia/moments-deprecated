@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { IComment } from './interface/IComment';
+import { IResponse } from './interface/IResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  constructor() { }
+  private baseApiUrl = environment.baseApiUrl
+  private apiUrl = `${this.baseApiUrl}/api/moments`
+
+  constructor(private http: HttpClient) {}
+
+  createComment(data: IComment): Observable<IResponse<IComment>> {
+    const url = `${this.apiUrl}/${data.moment_id}/comment`
+    return this.http.post<IResponse<IComment>>(url, data)
+  }
 }
