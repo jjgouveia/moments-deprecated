@@ -10,10 +10,10 @@
     </div>
     <div class="form-group">
         <label for="description">Descrição:</label>
-        <textarea placeholder="Conte como foi ❤️" formControlName="description" ng-trim="false"
+        <textarea placeholder="Conte como foi ❤️" maxlength="512" formControlName="description" ng-trim="false"
             (keyup)="descCountWords()" required></textarea>
-        <p>
-            Caracteres restantes: {{ descLength }}
+        <p [ngStyle]="{ 'textAlign': 'right'}">
+            {{ descLength }}/512
         </p>
         <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
             <p *ngIf="description.errors?.['required']">A descrição é obrigatória.</p>
@@ -26,7 +26,7 @@
             <label for="image">A foto que marcou o <span style="color: #dec129;">momento</span>:</label>
             <input type="file" (change)="onFileSelected($event)" required="false">
             <div *ngIf="image.invalid && formDir.submitted" class="validation-error">
-                <p *ngIf="image.errors?.['required']">A image é obrigatória.</p>
+                <p *ngIf="image.errors?.['required']">A imagem é obrigatória.</p>
             </div>
         </div>
     </div>

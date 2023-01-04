@@ -31,6 +31,7 @@ nav {
 .links a {
     padding: .1em .3em;
     transition: .4s;
+    font-weight: 600;
 }
 
 #add a {

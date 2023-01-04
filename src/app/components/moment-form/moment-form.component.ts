@@ -12,10 +12,11 @@ export class MomentFormComponent implements OnInit {
   @Input() btnText!: string
   @Input() momentData: IMoment | null = null
   @Input() editMode: boolean = false
+  @Input() required: boolean = true
 
 
   momentForm!: FormGroup
-  descLength: number = 256;
+  descLength: number = 0;
 
   constructor() { }
 
@@ -29,7 +30,7 @@ export class MomentFormComponent implements OnInit {
       description: new FormControl(this.momentData ? this.momentData.description : '', [
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(256),
+        Validators.maxLength(512),
       ]),
       image: new FormControl(this.momentData ? this.momentData.image : '', [ Validators.required ]),
     });
@@ -48,9 +49,9 @@ export class MomentFormComponent implements OnInit {
   }
 
   descCountWords(): number {
-    const MAX_CHAR = 256;
+    const MAX_CHAR = 512;
     const WORDS_LENGTH: number = this.momentForm.get('description')?.value.length;
-    let remaining: number = MAX_CHAR - WORDS_LENGTH;
+    let remaining: number = WORDS_LENGTH;
     return this.descLength = remaining;
   }
 
