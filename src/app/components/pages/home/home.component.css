@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     margin-left: auto;
-    
+
 }
 
 .home-container h1 {
@@ -76,4 +76,8 @@ a:hover {
     width: 100%;
     text-align: center;
 }
+
+/* @media (width < 920) {
+
+} */
 
