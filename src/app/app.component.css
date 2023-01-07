@@ -1,5 +1,29 @@
 .container {
-    min-height: 77vh; /* Área destinada ao conteudo do site */
-    margin-top: 1em;
+    min-height: 100vh;
+    margin-left: 180px; /* Área destinada ao conteudo do site */
+    overflow: hidden;
+    transition: all .4s;
+}
+
+@media (width < 920px) {
+    .container {
+        transition: margin .4s;
+        margin-left: 71px;
+    }
+}
+
+@media (width > 397px) {
+    .container {
+        transition: padding .4s;
+        margin-top: -224px;
+    }
+}
+
+@media (width < 397px) {
+    .container {
+        transition: padding .4s;
+        padding-top: 40px;
+        margin-left: unset; /* Área destinada ao conteudo do site */
+    }
 }
 

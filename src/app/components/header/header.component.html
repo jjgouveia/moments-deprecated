@@ -1,11 +1,32 @@
-<nav>
-    <a class="brand" routerLink="">
+<aside>
+    <header>
+        <a class="brand" routerLink="">
+            <img src="../../../assets/moments.png" alt="Moments">
+            <h2>Moments</h2>
+        </a>
+    </header>
+    <nav>
+        <ul class="links">
+            <li><a routerLink="/"><fa-icon [icon]="faHouseUser"></fa-icon><span>Home</span></a></li>
+            <li id="add"><a routerLink="/moments/new"><fa-icon
+                        [icon]="faCameraRetro"></fa-icon><span>Compartilhar</span></a></li>
+            <li><a routerLink="/about"><fa-icon [icon]="faUser"></fa-icon><span>Sobre</span></a></li>
+        </ul>
+    </nav>
+
+
+</aside>
+<div class="mobile-header">
+    <a class="brand-mobile" routerLink="">
         <img src="../../../assets/moments.png" alt="Moments">
         <h2>Moments</h2>
     </a>
-    <ul class="links">
-        <li><a routerLink="/"> Home </a></li>
-        <li id="add"><a routerLink="/moments/new"> Compartilhar </a></li>
-        <li><a routerLink="/about"> Sobre </a></li>
+</div>
+<nav class="footer-bar">
+    <ul class="foot-links">
+        <li><a routerLink="/"><fa-icon [icon]="faHouseUser"></fa-icon><span>Home</span></a></li>
+        <li id="add"><a routerLink="/moments/new"><fa-icon
+                    [icon]="faCameraRetro"></fa-icon><span>Compartilhar</span></a></li>
+        <li><a routerLink="/about"><fa-icon [icon]="faUser"></fa-icon><span>Sobre</span></a></li>
     </ul>
 </nav>
