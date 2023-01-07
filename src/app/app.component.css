@@ -1,4 +1,13 @@
 .container {
-    min-height: 77vh; /* Área destinada ao conteudo do site */
+    min-height: 100vh;
+    margin-left: 180px; /* Área destinada ao conteudo do site */
+    overflow: hidden;
+    transition: all .4s;
+}
+
+@media (width < 920px) {
+    .container {
+        margin-left: 71px;
+    }
 }
 

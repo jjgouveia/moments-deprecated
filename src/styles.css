@@ -110,3 +110,7 @@ a fa-icon {
  color: #fff;
  background-color: #dc3545;
 }
+
+.border {
+  border: 1px solid red;
+}
